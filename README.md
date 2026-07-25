@@ -1,7 +1,7 @@
 <!-- START BANNER -->
 <div align="center">
 
-![Rubby Room Chat Header](https://capsules-render.vercel.app/api?type=waving&color=gradient&customColorList=0,e81cff,40c9ff,00dbde&fontColor=ffffff&height=260&section=header&text=Rubby%20Room%20Chat&fontSize=55&animation=fadeIn&desc=A%20Mobile-First%20Real-Time%20Cyberpunk%20Chat%20Application&descAlignY=62&descAlign=50)
+![Rubby Room Chat Header](./assets/banner-start.svg)
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=600&size=22&pause=1000&color=E81CFF&center=true&vCenter=true&width=500&lines=Powered+By+RubbySoft;Instant+Custom+Chat+Rooms;Integrated+Google+Gemini+AI+Chat;Mobile-First+Cyberpunk+Experience)](https://git.io/typing-svg)
 
@@ -160,7 +160,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](file:///e
 <!-- END BANNER -->
 <div align="center">
 
-![Rubby Room Chat Footer](https://capsules-render.vercel.app/api?type=waving&color=gradient&customColorList=0,00dbde,40c9ff,e81cff&fontColor=ffffff&height=180&section=footer&text=Thank%20You%20For%20Visiting!&fontSize=35&animation=fadeIn)
+![Rubby Room Chat Footer](./assets/banner-end.svg)
 
 <p align="center">
   Made with ❤️ by <b>Siddhesh More</b>, <b>Yuvraj Chaudhari</b> & <b>RubbySoft</b>
