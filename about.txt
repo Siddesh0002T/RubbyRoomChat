@@ -1,0 +1,47 @@
+================================================================================
+RUBBY ROOM CHAT — GITHUB REPOSITORY ABOUT & METADATA GUIDE
+================================================================================
+Copy and paste the appropriate sections below directly into your GitHub 
+repository's "About" settings (click the ⚙️ gear icon in the top-right corner 
+of your repository's main page on GitHub).
+================================================================================
+
+--- [ 1. REPOSITORY DESCRIPTION ] ---
+(Copy & paste this into the "Description" box in GitHub settings - under 350 chars)
+
+A mobile-first real-time chat application featuring custom chat rooms, one-click invitation links, and an integrated Google Gemini AI assistant. Styled with a stunning dark-mode cyberpunk aesthetic by RubbySoft.
+
+--- [ 2. WEBSITE / DEMO URL ] ---
+(Copy & paste your live deployment link or official portfolio into the "Website" box)
+
+https://siddhuu.vercel.app/
+
+--- [ 3. GITHUB TOPICS / TAGS ] ---
+(Add these keywords one by one into the "Topics" tag field for SEO & visibility)
+
+react
+firebase
+chat-application
+realtime-chat
+gemini-ai
+google-generative-ai
+cyberpunk-ui
+dark-mode
+rubbysoft
+mobile-first
+expressjs
+styled-components
+javascript
+fullstack
+websocket
+chat-room
+
+--- [ 4. EXTENDED ABOUT / SUMMARY ] ---
+(For use in release notes, social media posts, or portfolio documentation)
+
+Rubby Room Chat is a modern communication platform designed for instant, barrier-free messaging. Users can instantly join or create custom chat rooms simply by entering a room name and username. By sharing a generated link, friends can hop into the room seamlessly. 
+
+Beyond human-to-human interaction, Rubby Room Chat integrates Google's cutting-edge Generative AI (Gemini) to provide an intelligent on-demand conversational assistant. Built with React 18, Firebase, Express, and styled with a signature neon cyberpunk aesthetic, Rubby Room Chat delivers a fast, responsive, and visually stunning web experience.
+
+Developed by Siddhesh More and Yuvraj Chaudhari under RubbySoft.
+================================================================================
