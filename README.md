@@ -123,23 +123,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to experienc
 
 ---
 
-## 🤝 Developers & Contributors
-
-This application is crafted with passion by experienced full-stack and mobile developers:
-
-<div align="center">
-
-| **Siddhesh More** | **Yuvraj Chaudhari** |
-| :---: | :---: |
-| Full Stack Web Developer • Diploma in Computer Eng. | Full Stack & Android Dev • Campus Ambassador at E-Cell IIT Bombay |
-| 🌐 [Portfolio](https://siddhuu.vercel.app/) • 💻 [GitHub](https://github.com/siddesh0002t) | 💻 [GitHub](https://github.com/YUVRAJ007137) • 👔 [LinkedIn](https://www.linkedin.com/in/yuvraj-chaudhari-72a9072a0) |
-| 📧 [Email](mailto:siddeshmore145@gmail.com) • 📸 [Instagram](https://instagram.com/siddhesh0002t) | 📧 [Email](mailto:yuvrajsc42@gmail.com) • 📸 [Instagram](https://instagram.com/yuvraj_chaudhari_007) |
-| 👔 [LinkedIn](https://www.linkedin.com/siddhesh0002t) | 📞 +91 9699674627 |
-
-</div>
-
----
-
 ## 🏢 About RubbySoft
 
 **RubbySoft** is dedicated to developing user-friendly, innovative, and visually immersive software solutions. Our mission is to provide seamless digital experiences through cutting-edge applications.
