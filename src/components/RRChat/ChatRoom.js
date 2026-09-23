@@ -4,7 +4,10 @@ import { db } from '../../firebaseConfig';
 import { collection, addDoc, serverTimestamp, query, onSnapshot, orderBy } from 'firebase/firestore';
 import { useNetwork } from '../../context/NetworkContext';
 import { useToast } from '../../context/ToastContext';
-import { FaPaperPlane, FaShareAlt, FaArrowLeft, FaBolt, FaComments, FaCheck, FaCheckDouble } from 'react-icons/fa';
+import MarkdownText from '../common/MarkdownText';
+import SendCodeModal from './SendCodeModal';
+import SendLinkModal from './SendLinkModal';
+import { FaPaperPlane, FaShareAlt, FaArrowLeft, FaBolt, FaComments, FaCheck, FaCheckDouble, FaCopy, FaCode, FaLink } from 'react-icons/fa';
 import './Css/CR.css';
 
 const QUICK_EMOJIS = ['👋', '🔥', '❤️', '👍', '😂', '🚀', '🎉', '💯'];
@@ -15,6 +18,7 @@ const ChatRoom = () => {
   const { addToast } = useToast();
   const { isOnline, dataSaver, toggleDataSaver } = useNetwork();
   const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
 
   // Retrieve room name and username
   const queryParams = new URLSearchParams(location.search);
@@ -23,6 +27,9 @@ const ChatRoom = () => {
   const avatar = localStorage.getItem('user_avatar') || '🦊';
 
   const [message, setMessage] = useState('');
+  const [copiedMsgId, setCopiedMsgId] = useState(null);
+  const [showCodeModal, setShowCodeModal] = useState(false);
+  const [showLinkModal, setShowLinkModal] = useState(false);
   const [messages, setMessages] = useState(() => {
     // 1. Instant Cache Load for Low Speed / Offline
     try {
@@ -145,6 +152,25 @@ const ChatRoom = () => {
     }
   };
 
+  // Copy full message text with hover/tap button
+  const copyMessageText = (text, id) => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      setCopiedMsgId(id);
+      addToast('Message copied to clipboard!', 'success');
+      setTimeout(() => setCopiedMsgId(null), 2000);
+    }
+  };
+
+  // Markdown format insertion helper
+  const insertMarkdown = (prefix, suffix, defaultPlaceholder = '') => {
+    setMessage((prev) => {
+      const val = prev || '';
+      return `${val}${val.length > 0 && !val.endsWith(' ') && !val.endsWith('\n') ? ' ' : ''}${prefix}${defaultPlaceholder}${suffix}`;
+    });
+    inputRef.current?.focus();
+  };
+
   const formatDateHeader = (isoDate) => {
     if (!isoDate) return 'Today';
     const date = new Date(isoDate);
@@ -252,8 +278,28 @@ const ChatRoom = () => {
                     </div>
 
                     <div className="message-bubble-body">
+                      {/* Hover Copy Button */}
+                      <button
+                        type="button"
+                        className="message-hover-copy-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          copyMessageText(msg.text, msg.id);
+                        }}
+                        title="Copy message text"
+                        aria-label="Copy message text"
+                      >
+                        {copiedMsgId === msg.id ? (
+                          <FaCheck style={{ color: 'var(--success)' }} />
+                        ) : (
+                          <FaCopy />
+                        )}
+                      </button>
+
                       {!isMe && <div className="message-author-tag">{msg.username}</div>}
-                      <div className="message-text-content">{msg.text}</div>
+                      <div className="message-text-content">
+                        <MarkdownText text={msg.text} />
+                      </div>
                       <div className="message-meta-footer">
                         <span>{formatMessageTime(msg.timestamp)}</span>
                         {isMe && (
@@ -291,6 +337,78 @@ const ChatRoom = () => {
         ))}
       </div>
 
+      {/* Markdown Helper Toolbar */}
+      <div className="markdown-toolbar">
+        <button
+          type="button"
+          className="md-toolbar-btn md-toolbar-send-code-btn"
+          onClick={() => setShowCodeModal(true)}
+          title="Share formatted Code Snippet with syntax colors"
+        >
+          <FaCode style={{ marginRight: '5px' }} />
+          <span>Send Code</span>
+        </button>
+        <button
+          type="button"
+          className="md-toolbar-btn md-toolbar-send-link-btn"
+          onClick={() => setShowLinkModal(true)}
+          title="Share a Link with domain badge & copy button"
+        >
+          <FaLink style={{ marginRight: '5px' }} />
+          <span>Send Link</span>
+        </button>
+        <span className="md-toolbar-sep">|</span>
+        <span className="md-toolbar-label">Format:</span>
+        <button
+          type="button"
+          className="md-toolbar-btn"
+          onClick={() => insertMarkdown('**', '**', 'bold text')}
+          title="Bold (**text**)"
+        >
+          <strong>B</strong>
+        </button>
+        <button
+          type="button"
+          className="md-toolbar-btn"
+          onClick={() => insertMarkdown('*', '*', 'italic text')}
+          title="Italic (*text*)"
+        >
+          <em>I</em>
+        </button>
+        <button
+          type="button"
+          className="md-toolbar-btn"
+          onClick={() => insertMarkdown('`', '`', 'code')}
+          title="Inline Code (`code`)"
+        >
+          &lt;/&gt;
+        </button>
+        <button
+          type="button"
+          className="md-toolbar-btn"
+          onClick={() => insertMarkdown('```javascript\n', '\n```', '// paste code here')}
+          title="Code Block (```lang ... ```)"
+        >
+          &#123; &#125;
+        </button>
+        <button
+          type="button"
+          className="md-toolbar-btn"
+          onClick={() => insertMarkdown('> ', '', 'quote')}
+          title="Quote (> text)"
+        >
+          &ldquo;
+        </button>
+        <button
+          type="button"
+          className="md-toolbar-btn"
+          onClick={() => insertMarkdown('- ', '', 'list item')}
+          title="List (- item)"
+        >
+          &bull;
+        </button>
+      </div>
+
       {/* Input Form Bar */}
       <form
         className="chat-input-area"
@@ -299,14 +417,33 @@ const ChatRoom = () => {
           handleSendMessage();
         }}
       >
+        <button
+          type="button"
+          className="btn-code-modal-trigger"
+          onClick={() => setShowCodeModal(true)}
+          title="Share Code Snippet (ChatGPT-style)"
+          aria-label="Share Code Snippet"
+        >
+          <FaCode />
+        </button>
+        <button
+          type="button"
+          className="btn-link-modal-trigger"
+          onClick={() => setShowLinkModal(true)}
+          title="Share Link (with domain & copy button)"
+          aria-label="Share Link"
+        >
+          <FaLink />
+        </button>
         <input
+          ref={inputRef}
           type="text"
           className="chat-input-box"
-          placeholder={`Message #${roomName}...`}
+          placeholder={`Message #${roomName}... (Supports Markdown, links & code)`}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyDown}
-          maxLength={1000}
+          maxLength={4000}
         />
         <button
           type="submit"
@@ -317,6 +454,20 @@ const ChatRoom = () => {
           <FaPaperPlane />
         </button>
       </form>
+
+      {/* ChatGPT-style Code Snippet Modal */}
+      <SendCodeModal
+        isOpen={showCodeModal}
+        onClose={() => setShowCodeModal(false)}
+        onSendCode={(formattedCodeMsg) => handleSendMessage(formattedCodeMsg)}
+      />
+
+      {/* Rich Link Sharing Modal */}
+      <SendLinkModal
+        isOpen={showLinkModal}
+        onClose={() => setShowLinkModal(false)}
+        onSendLink={(formattedLinkMsg) => handleSendMessage(formattedLinkMsg)}
+      />
     </div>
   );
 };

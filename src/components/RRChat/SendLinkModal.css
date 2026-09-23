@@ -1,0 +1,270 @@
+/* Send Link Modal Backdrop */
+.link-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 18, 18, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  padding: 16px;
+  animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modal Window */
+.link-modal-window {
+  background: var(--bg-surface);
+  border: 2.5px solid var(--border-color);
+  box-shadow: 6px 6px 0px var(--shadow-color);
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--text-main);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Header */
+.link-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 2.5px solid var(--border-color);
+  background: var(--bg-card);
+}
+
+.link-modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.link-modal-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #121212;
+  font-size: 1.15rem;
+  border: 2px solid var(--border-color);
+  box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+.link-modal-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.link-modal-subtitle {
+  margin: 2px 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.link-modal-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: transparent;
+  border: 2px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s ease;
+}
+
+.link-modal-close-btn:hover {
+  background: var(--accent-pink);
+  color: #ffffff;
+  border-color: var(--border-color);
+}
+
+/* Modal Body */
+.link-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--bg-main);
+}
+
+.link-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.link-input-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.link-input-label .required {
+  color: var(--accent-pink);
+}
+
+.link-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.link-field-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+
+.link-text-input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 14px 10px 36px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-main);
+  outline: none;
+  box-shadow: 2px 2px 0px var(--shadow-color);
+  transition: all 0.15s ease;
+}
+
+.link-text-input.plain {
+  padding-left: 14px;
+}
+
+.link-text-input:focus {
+  border-color: var(--primary);
+  box-shadow: 3px 3px 0px var(--border-color);
+}
+
+/* Live Preview Box */
+.link-preview-box {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1.5px dashed var(--border-color);
+}
+
+.link-preview-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.link-preview-render {
+  display: flex;
+  align-items: center;
+}
+
+/* Modal Footer */
+.link-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-top: 2.5px solid var(--border-color);
+  background: var(--bg-card);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.link-modal-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.link-modal-hint kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-main);
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 1px 1px 0px var(--shadow-color);
+}
+
+.link-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.link-btn-cancel {
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-main);
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.link-btn-cancel:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-mode='dark'] .link-btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.link-btn-send {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #121212;
+  border: 2px solid var(--border-color);
+  box-shadow: 3px 3px 0px var(--shadow-color);
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-btn-send:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px var(--shadow-color);
+  background: var(--accent-mint);
+}
+
+.link-btn-send:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--shadow-color);
+}
+
+.link-btn-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}

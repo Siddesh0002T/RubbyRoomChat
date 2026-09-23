@@ -1,0 +1,360 @@
+/* Markdown & Code Block Styling */
+.md-rendered-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.md-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.md-inline-code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: var(--text-main);
+}
+
+[data-mode='dark'] .md-inline-code {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #FFE500;
+}
+
+/* =========================================================
+   ChatGPT / Modern LLM Style Code Card
+   ========================================================= */
+.chatgpt-code-card {
+  margin: 10px 0;
+  border-radius: 8px;
+  background: #0d1117;
+  color: #e6edf3;
+  border: 2px solid #21262d;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  max-width: 100%;
+}
+
+[data-mode='dark'] .chatgpt-code-card {
+  background: #090d16;
+  border: 2px solid #30363d;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+}
+
+/* ChatGPT Top Header Bar */
+.chatgpt-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: #161b22;
+  border-bottom: 1px solid #21262d;
+  font-family: var(--font-mono);
+  user-select: none;
+}
+
+[data-mode='dark'] .chatgpt-code-header {
+  background: #131823;
+  border-bottom: 1px solid #30363d;
+}
+
+.chatgpt-code-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #8b949e;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+}
+
+.chatgpt-lang-icon {
+  font-size: 0.72rem;
+  color: #58a6ff;
+}
+
+/* ChatGPT Copy Code Button */
+.chatgpt-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  border-radius: 6px;
+  background: transparent;
+  color: #c9d1d9;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chatgpt-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.chatgpt-copy-btn.copied {
+  color: #3fb950;
+  background: rgba(46, 160, 67, 0.15);
+  border-color: rgba(46, 160, 67, 0.4);
+}
+
+.chatgpt-copy-btn .copy-icon {
+  font-size: 0.75rem;
+}
+
+/* ChatGPT Code Body & Pre */
+.chatgpt-code-body {
+  position: relative;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.chatgpt-pre {
+  margin: 0;
+  padding: 0 14px;
+  font-family: 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  tab-size: 2;
+  white-space: pre;
+}
+
+.chatgpt-code-line {
+  display: flex;
+  min-height: 1.6em;
+}
+
+.chatgpt-line-num {
+  width: 32px;
+  min-width: 32px;
+  margin-right: 14px;
+  text-align: right;
+  color: #484f58;
+  font-size: 0.78rem;
+  user-select: none;
+  opacity: 0.7;
+}
+
+.chatgpt-line-tokens {
+  flex: 1;
+}
+
+/* =========================================================
+   Syntax Highlighting Colors (Modern VS Code / ChatGPT)
+   ========================================================= */
+.tok-keyword {
+  color: #ff7b72; /* Crisp coral red/pink */
+  font-weight: 600;
+}
+
+.tok-boolean {
+  color: #ffa657; /* Warm amber/orange */
+  font-weight: 600;
+}
+
+.tok-string {
+  color: #a5d6ff; /* Soft sky blue */
+}
+
+.tok-comment {
+  color: #8b949e; /* Muted gray comment */
+  font-style: italic;
+}
+
+.tok-tag {
+  color: #7ee787; /* Vibrant mint green */
+  font-weight: 600;
+}
+
+.tok-number {
+  color: #79c0ff; /* Bright blue */
+}
+
+.tok-function {
+  color: #d2a8ff; /* Soft purple */
+  font-weight: 500;
+}
+
+.tok-ident {
+  color: #e6edf3;
+}
+
+.tok-operator {
+  color: #ff7b72;
+}
+
+/* Blockquotes */
+.md-blockquote {
+  border-left: 3px solid var(--primary);
+  padding-left: 10px;
+  margin: 4px 0;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Links */
+.md-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.md-link:hover {
+  color: var(--primary);
+}
+
+/* =========================================================
+   ChatGPT / Rich Link Badge & Copy Link Button
+   ========================================================= */
+.md-rich-link-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1.5px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+  margin: 2px 4px 2px 0;
+  vertical-align: middle;
+  transition: all 0.15s ease;
+  max-width: 100%;
+}
+
+.md-rich-link-badge:hover {
+  border-color: var(--primary);
+  background: rgba(0, 0, 0, 0.08);
+}
+
+[data-mode='dark'] .md-rich-link-badge {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+}
+
+[data-mode='dark'] .md-rich-link-badge:hover {
+  border-color: #FFE500;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.md-rich-link-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.md-rich-link-icon {
+  font-size: 0.78em;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+[data-mode='dark'] .md-rich-link-icon {
+  color: #FFE500;
+}
+
+.md-rich-link-title {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 220px;
+}
+
+.md-rich-link-domain {
+  display: inline-block;
+  font-size: 0.68em;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--primary);
+  color: #121212;
+  text-transform: lowercase;
+  letter-spacing: 0.2px;
+  flex-shrink: 0;
+}
+
+.md-rich-link-ext {
+  font-size: 0.65em;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.md-rich-link-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+[data-mode='dark'] .md-rich-link-copy-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.md-rich-link-copy-btn:hover {
+  background: var(--primary);
+  color: #121212;
+  border-color: var(--border-color);
+}
+
+.md-rich-link-copy-btn.copied {
+  background: #2ea043;
+  color: #ffffff;
+  border-color: #2ea043;
+}
+
+.md-rich-link-copy-btn .copy-icon {
+  font-size: 0.68rem;
+}
+
+/* Lists */
+.md-list-item {
+  display: flex;
+  gap: 8px;
+  margin-left: 4px;
+}
+
+.md-bullet {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.md-spacer {
+  height: 6px;
+}
