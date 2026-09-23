@@ -1,0 +1,337 @@
+/* Home Page Styling */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 20px 0 40px 0;
+}
+
+/* Hero Section */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0;
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+    padding: 20px 0;
+  }
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .hero-content {
+    align-items: center;
+  }
+}
+
+.hero-headline {
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+  color: var(--text-main);
+}
+
+@media (max-width: 600px) {
+  .hero-headline {
+    font-size: 2.3rem;
+  }
+}
+
+.hero-typewriter-highlight {
+  color: var(--primary);
+  display: inline-block;
+  min-height: 1.2em;
+}
+
+.hero-subhead {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 540px;
+}
+
+.hero-stats-row {
+  display: flex;
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+/* Quick Join Card */
+.hero-join-card {
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+}
+
+[data-theme='neobrutalism'] .hero-join-card {
+  background: #ffffff;
+  border: var(--border);
+  box-shadow: 6px 6px 0px #121212;
+}
+
+.join-card-header {
+  margin-bottom: 24px;
+}
+
+.join-card-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.join-card-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.join-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.join-submit-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.05rem;
+  margin-top: 8px;
+}
+
+/* Bento Grid Features (Inspired by reference images) */
+.bento-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bento-card {
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+}
+
+[data-theme='neobrutalism'] .bento-card {
+  background: #ffffff;
+  border: var(--border);
+  box-shadow: 4px 4px 0px #121212;
+}
+
+[data-theme='neobrutalism'] .bento-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #121212;
+}
+
+.bento-card.span-2 {
+  grid-column: span 2;
+}
+
+@media (max-width: 600px) {
+  .bento-card.span-2 {
+    grid-column: span 1;
+  }
+}
+
+.bento-tab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bento-folder-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  font-size: 1.25rem;
+}
+
+[data-theme='neobrutalism'] .bento-folder-tab {
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0px #121212;
+}
+
+.bento-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.bento-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-top: 8px;
+  margin-bottom: 6px;
+}
+
+.bento-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* Category Quick Rooms */
+.rooms-quick-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quick-rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.quick-room-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.quick-room-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+[data-theme='neobrutalism'] .quick-room-card {
+  background: #ffffff;
+  border: var(--border);
+  box-shadow: 3px 3px 0px #121212;
+}
+
+[data-theme='neobrutalism'] .quick-room-card:hover {
+  background: var(--primary);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #121212;
+}
+
+.quick-room-icon {
+  font-size: 1.5rem;
+}
+
+.quick-room-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.quick-room-name {
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.quick-room-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}

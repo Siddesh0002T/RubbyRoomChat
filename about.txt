@@ -43,5 +43,5 @@ Rubby Room Chat is a modern communication platform designed for instant, barrier
 
 Beyond human-to-human interaction, Rubby Room Chat integrates Google's cutting-edge Generative AI (Gemini) to provide an intelligent on-demand conversational assistant. Built with React 18, Firebase, Express, and styled with a signature neon cyberpunk aesthetic, Rubby Room Chat delivers a fast, responsive, and visually stunning web experience.
 
-Developed by Siddhesh More and Yuvraj Chaudhari under RubbySoft.
+Developed by Siddhesh More under RubbySoft.
 ================================================================================

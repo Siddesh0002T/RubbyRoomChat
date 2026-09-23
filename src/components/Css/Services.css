@@ -1,28 +1,90 @@
-/* src/components/Services.css */
-.services {
-    padding: 20px;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-  }
-  
-  .service-card {
-    background-color: #1e1e1e;
-    border: 1px solid #e81cff; /* Secondary color */
-    padding: 15px; 
-    margin-bottom: 10px;
-    border-radius: 8px;
-  }
-  
-  .service-card h3 {
-    color: #e81cff; /* Secondary color */
-  }
-  
-  .service-card ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .service-card li {
-    margin: 5px 0;
-  }
-  
+.services-container {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: 10px 0 40px 0;
+}
+
+.services-header-card {
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+[data-theme='neobrutalism'] .services-header-card {
+  background: #ffffff;
+  border: var(--border);
+  box-shadow: 6px 6px 0px #121212;
+}
+
+.services-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.service-card-modern {
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card-modern:hover {
+  transform: translateY(-4px);
+}
+
+[data-theme='neobrutalism'] .service-card-modern {
+  background: #ffffff;
+  border: var(--border);
+  box-shadow: 4px 4px 0px #121212;
+}
+
+[data-theme='neobrutalism'] .service-card-modern:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #121212;
+}
+
+.service-card-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.service-card-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.service-features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.service-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.service-check-icon {
+  color: var(--success);
+  font-size: 0.85rem;
+}

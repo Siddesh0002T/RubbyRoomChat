@@ -1,91 +1,93 @@
 import React from 'react';
 import ServiceCard from './ServiceCard';
+import { FaComments, FaUserShield, FaBolt, FaBell, FaPalette, FaHeadset } from 'react-icons/fa';
 import './Css/Services.css';
-import './Css/Subscribe.css';
 
 const servicesData = [
   {
-    title: "Chat Rooms",
-    description: "Create and join chat rooms to connect with friends and new people.",
+    title: "Instant Room Chat",
+    description: "Create and join chat rooms to connect with friends, teammates, and communities with zero registration.",
+    icon: <FaComments />,
     features: [
-      "Create a chat room", 
-      "Join an existing chat room",
-      "Share a link to invite friends"
+      "Custom disposable room codes",
+      "One-click shareable invite links",
+      "Real-time synchronized messaging"
     ]
   },
   {
-    title: "User Profiles",
-    description: "Set up and manage your profile to personalize your experience.",
+    title: "Low-Bandwidth & Offline Cache",
+    description: "Built for patchy network conditions and low-data mobile packages across 2G, 3G, and 4G.",
+    icon: <FaBolt />,
     features: [
-      "Set username",
-      "Update profile picture",
-      "Manage personal information"
+      "Optimistic message delivery",
+      "Automatic local storage caching",
+      "Lite / Data Saver mode toggle"
     ]
   },
   {
-    title: "Instant Messaging",
-    description: "Enjoy seamless messaging with text and multimedia support.",
+    title: "Tactile Retro Design",
+    description: "Enjoy a bold, joyful interface with high-contrast borders and tactile cards.",
+    icon: <FaPalette />,
     features: [
-      "Send text messages",
-      "Send multimedia messages",
-      "Use emojis and reactions"
+      "Neo-Brutalist Pop design system",
+      "Vibrant folder tabs and crisp shadows",
+      "Clean, modern typography"
     ]
   },
   {
-    title: "Notifications",
-    description: "Stay updated with real-time notifications for new messages and activities.",
+    title: "Privacy & Ephemeral Storage",
+    description: "We respect user privacy by eliminating accounts, tracking cookies, and invasive sign-up barriers.",
+    icon: <FaUserShield />,
     features: [
-      "In-app notifications",
-      "Push notifications",
-      "Email notifications"
+      "No email or password needed",
+      "Local nickname storage only",
+      "Encrypted Firestore data transport"
     ]
   },
   {
-    title: "Security and Privacy",
-    description: "We prioritize your security and privacy with robust measures.",
+    title: "Instant Alerts & Quick Reactions",
+    description: "Stay in sync with unobtrusive notifications and express yourself with single-tap emoji chips.",
+    icon: <FaBell />,
     features: [
-      "Data encryption",
-      "User privacy settings",
-      "Reporting and blocking users"
+      "One-tap quick emoji reactions",
+      "System connection status toasts",
+      "Date grouped chat stream dividers"
     ]
   },
   {
-    title: "Customization",
-    description: "Personalize your chat experience with various customization options.",
+    title: "Open Source & Community",
+    description: "Developed and maintained by RubbySoft with transparent open-source code on GitHub.",
+    icon: <FaHeadset />,
     features: [
-      "Theme selection",
-      "Customizable chat backgrounds",
-      "Font size and style options"
-    ]
-  },
-  {
-    title: "Support and Help",
-    description: "Get help and support whenever you need it.",
-    features: [
-      "FAQ section",
-      "Contact support",
-      "User guides and tutorials"
+      "Community contributions welcomed",
+      "Clean modular React components",
+      "Mobile-first responsive architecture"
     ]
   }
 ];
 
 const Services = () => {
   return (
-    <div className="services">
-      <h2>Our Services</h2>
-      <br/>
-      
-      <div className="services-list">
+    <div className="services-container">
+      <div className="services-header-card">
+        <span className="pill-badge" style={{ marginBottom: '12px' }}>Platform Capabilities</span>
+        <h1 style={{ fontSize: '2.2rem', fontWeight: '800', marginBottom: '10px' }}>What Rubby Room Offers</h1>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.6' }}>
+          Explore the features engineered to give you the fastest, most aesthetic disposable chat experience on the web.
+        </p>
+      </div>
+
+      <div className="services-grid-layout">
         {servicesData.map((service, index) => (
-          <ServiceCard 
+          <ServiceCard
             key={index}
             title={service.title}
             description={service.description}
             features={service.features}
+            icon={service.icon}
           />
         ))}
       </div>
-      <br/>
     </div>
   );
 };

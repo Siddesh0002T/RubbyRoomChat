@@ -1,103 +1,78 @@
-import React from 'react';
-import Type from './Type';
-import RubbyAboutType from './RubbyAboutType';
-import MeType from './MeType';
+import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaGlobe, FaRocket } from 'react-icons/fa';
 import Subscribe from './Subscribe';
-import './Css/About.css'; 
+import './Css/About.css';
 
 const About = () => {
   return (
-    <div className="about-us">
-      <h1>About Rubby Room Chat</h1>
-      <p>
-        Rubby Room Chat is a mobile-first chat application that allows users to easily create and join chat rooms. Users can set their username and join a chat room by entering the room name. If the room doesn't exist, a new one will be created. Invite your friends by sharing the link, and they can join by adding their username.
-      </p>
-      <div className='type-text'>
-        <Type/>
+    <div className="about-page-layout">
+      {/* Brand Hero */}
+      <div className="about-hero-card">
+        <span className="pill-badge" style={{ alignSelf: 'flex-start' }}>
+          <FaRocket /> The Story
+        </span>
+        <h1 className="about-hero-title">About Rubby Room Chat</h1>
+        <p className="about-hero-text">
+          Rubby Room Chat is built with a singular mission: to make digital communication frictionless, lightweight, and fun. You don’t need an account, password, phone number, or verification email to chat with friends, colleagues, or communities.
+        </p>
+        <p className="about-hero-text">
+          Engineered for real-world conditions, Rubby Room Chat operates smoothly even on spotty 2G/3G mobile data connections through intelligent local caching and low-bandwidth optimizations.
+        </p>
       </div>
-      <h2>About Rubbysoft</h2>
-      <p>
-        Rubbysoft is dedicated to developing user-friendly and innovative software solutions. Our mission is to provide seamless and enjoyable experiences for our users through our applications.
-      </p>
-      <div className='type-text'>
-        <RubbyAboutType/>
+
+      {/* Developer Section */}
+      <div>
+        <h2 style={{ fontSize: '1.8rem', fontWeight: '800', marginBottom: '20px' }}>
+          About the Developer
+        </h2>
+
+        <div className="developers-grid">
+          {/* Siddhesh More */}
+          <div className="developer-card">
+            <div className="developer-header">
+              <div className="developer-avatar">SM</div>
+              <div>
+                <h3 className="developer-name">Siddhesh More</h3>
+                <span className="developer-role">Full Stack Web Developer • RubbySoft</span>
+              </div>
+            </div>
+            <p className="developer-bio">
+              Passionate full-stack developer with expertise in modern React architectures, real-time web applications, and cyber aesthetic UI design.
+            </p>
+            <ul className="developer-links-list">
+              <li>
+                <a href="https://siddhuu.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  <FaGlobe style={{ color: 'var(--primary)' }} /> Portfolio: siddhesh0002t.com
+                </a>
+              </li>
+              <li>
+                <a href="mailto:siddeshmore145@gmail.com">
+                  <FaEnvelope style={{ color: 'var(--accent)' }} /> siddeshmore145@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/siddesh0002t" target="_blank" rel="noopener noreferrer">
+                  <FaGithub /> GitHub: Siddesh0002T
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/siddhesh0002t" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin style={{ color: '#0a66c2' }} /> LinkedIn: siddhesh0002t
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/siddhesh0002t" target="_blank" rel="noopener noreferrer">
+                  <FaInstagram style={{ color: '#e1306c' }} /> Instagram: @siddhesh0002t
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <p>
-        Contact Rubbysoft:
-        <center>
-        <ul>
-          <li>
-            <i className="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/rubbysoft">rubbysoft.co</a>
-          </li>
-          <li>
-          <i className="fas fa-envelope"></i> Email: <a href="mailto:rubbysoft.co@gmail.com">rubbysoft.co@gmail.com</a>
-          </li>
-          <li>
-            <i className="fab fa-github"></i> GitHub: <a href="https://github.com/rubbysoft">RubbySoft</a>
-          </li>
-        </ul>
-        </center>
-        <Subscribe/>
-      </p>
-      <h2>About the Developer</h2>
-      <p>
-        This application was developed by Siddhesh More, a passionate full stack web developer with expertise in various modern web technologies. Siddhesh is currently pursuing a Diploma in Computer Engineering at Mahaveer Polytechnic, Nashik.
-      </p>
-      <div className='type-text'>
-        <MeType/>
-      </div>
-      <p>
-        Contact Siddhesh More:
-        <ul>
-          <li>
-            <i className="fas fa-briefcase"></i> Portfolio: <a href="https://siddhuu.vercel.app/">siddhesh0002t.com</a>
-          </li>
-          <li>
-            <i className="fas fa-envelope"></i> Email: <a href="mailto:siddeshmore145@gmail.com">siddeshmore145@gmail.com</a>
-          </li>
-          <li>
-            <i className="fas fa-phone"></i> Phone: +91 9527024172
-          </li>
-          <li>
-            <i className="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/siddhesh0002t">Siddhesh0002T</a>
-          </li>
-          <li>
-            <i className="fab fa-linkedin"></i> LinkedIn: <a href="https://www.linkedin.com/siddhesh0002t">siddhesh0002t</a>
-          </li>
-          <li>
-            <i className="fab fa-github"></i> GitHub: <a href="https://github.com/siddesh0002t">Siddesh0002T</a>
-          </li>
-        </ul>
-      </p>
-      <br />
-      <h2>About the Developer</h2>
-      <p>
-        This application was developed by Yuvraj Chaudhari, a passionate full stack web developer as well as an experienced Android developer worked with many it companies and he is now a Campus Ambassador at E-Cell IIT Bombay. Yuvraj is currently pursuing a Diploma in Computer Engineering at Government Polytechnic, Murtizapur.
-      </p>
-      <br />
-      <p>
-        Contact Yuvraj Chaudhari:
-        <ul>
-         
-          <li>
-            <i className="fas fa-envelope"></i> Email: <a href="yuvrajsc42@gmail.com">yuvrajsc42@gmail.com</a>
-          </li>
-          <li>
-            <i className="fas fa-phone"></i> Phone: +91 9699674627
-          </li>
-          <li>
-            <i className="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/yuvraj_chaudhari_007">yuvraj_chaudhari_007</a>
-          </li>
-          <li>
-            <i className="fab fa-linkedin"></i> LinkedIn: <a href="https://www.linkedin.com/in/yuvraj-chaudhari-72a9072a0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Yuvraj Chaudhari</a>
-          </li>
-          <li>
-            <i className="fab fa-github"></i> GitHub: <a href="https://github.com/YUVRAJ007137">YUVRAJ007137</a>
-          </li>
-        </ul>
-      </p>
+
+      {/* Newsletter Subscribe */}
+      <Subscribe />
     </div>
   );
-}
+};
 
 export default About;

@@ -1,33 +1,192 @@
-.footer {
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    width: 100%;
-    bottom: 0;
+/* Footer Section */
+.footer-section {
+  width: 100%;
+  background: var(--bg-secondary);
+  border-top: var(--border-subtle);
+  padding: 48px 20px 24px 20px;
+  margin-top: 60px;
+  color: var(--text-main);
+  transition: all 0.25s ease;
+}
+
+[data-theme='neobrutalism'] .footer-section {
+  background: #f0ede4;
+  border-top: var(--border);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 860px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
-  
-  .footer-content {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .footer-content a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-content a:hover {
-    color: #e81cff;
-  }
-  
-  .footer-copyright {
-    font-size: 0.875rem;
-    color: #ccc;
-  }
-  
+}
+
+.footer-logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.footer-logo span {
+  color: var(--primary);
+}
+
+.footer-description {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  max-width: 440px;
+  margin-bottom: 16px;
+}
+
+.footer-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+[data-theme='neobrutalism'] .footer-status-pill {
+  border: 1.5px solid #121212;
+  box-shadow: 2px 2px 0px #121212;
+  background: #ffffff;
+}
+
+.status-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+}
+
+.footer-links-col h4,
+.footer-social-col h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-main);
+}
+
+.footer-links-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links-col ul li a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.footer-links-col ul li a:hover {
+  color: var(--primary);
+  transform: translateX(4px);
+}
+
+.footer-social-col p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.social-icons-row {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  color: var(--text-main);
+  font-size: 1.15rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.social-icon-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+[data-theme='neobrutalism'] .social-icon-btn {
+  background: #ffffff;
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0px #121212;
+}
+
+[data-theme='neobrutalism'] .social-icon-btn:hover {
+  background: var(--primary);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #121212;
+}
+
+.footer-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: var(--border-subtle);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+[data-theme='neobrutalism'] .footer-bottom-bar {
+  border-top: 1.5px solid #121212;
+}
+
+.heart-icon {
+  color: var(--danger);
+  vertical-align: middle;
+}
+
+.footer-features-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge-micro {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-full);
+}
+
+[data-theme='neobrutalism'] .badge-micro {
+  border: 1px solid #121212;
+  background: #ffffff;
+}

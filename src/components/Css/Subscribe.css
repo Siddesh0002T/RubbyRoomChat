@@ -1,99 +1,92 @@
-.form-container {
-    background: linear-gradient(#000000, #000000) padding-box,
-      linear-gradient(120deg, transparent 25%, #1cb0ff, #40ff99) border-box;
-    border: 2px solid transparent;
-    padding: 30px 10px;
-    font-size: 14px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    box-sizing: border-box;
-    border-radius: 16px;
-    width: 95%;    
+/* Subscribe & Contact Form Styling */
+.form-card-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .heading {
-    font-size: 20px;
-    font-weight: 600;
-  }
-  
-  .form-input {
-    color: white;
-    background: transparent;
-    border: 1px solid #414141;
-    border-radius: 5px;
-    padding: 8px;
-    outline: none;
-  }
-  
-  button {
-    border-radius: 5px;
-    padding: 6px;
-    background: #00000014;
-    color: #c7c5c5;
-    border: 1px solid #414141;
-  }
-  
-  button:hover {
-    background: #212121;
-    cursor: pointer;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    color: #414141;
-    position: relative;
-  } 
-  
-  .form-group label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 5px;
-    pointer-events: none;
-    transition: 0.5s;
-  }
-  
-  .form-group input:focus ~ label,
-  .form-group input:valid ~ label {
-    top: -16px;
-    left: 0;
-    background: #000000 padding-box;
-    padding: 10px 0 0 0;
-    color: #bdb8b8;
-  
-    font-size: 12px;
-  }
-  
-/* Add any additional styles for the contact-info section */
-.contact-info {
+
+[data-theme='neobrutalism'] .form-card-container {
+  background: #ffffff;
+  border: var(--border);
+  box-shadow: 6px 6px 0px #121212;
+}
+
+.form-header-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.form-header-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.form-fields-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.textarea-modern {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  color: var(--text-main);
+  border: var(--border-subtle);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  resize: vertical;
+  min-height: 110px;
+}
+
+.textarea-modern:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+[data-theme='neobrutalism'] .textarea-modern {
+  background: #ffffff;
+  border: 2px solid #121212;
+  box-shadow: 2px 2px 0px #121212;
+  color: #121212;
+}
+
+/* Subscribe Banner Card */
+.subscribe-banner-card {
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   margin-top: 20px;
 }
 
-.contact-info h3 {
-  margin-top: 0;
+[data-theme='neobrutalism'] .subscribe-banner-card {
+  background: #ffffff;
+  border: var(--border);
+  box-shadow: 4px 4px 0px #121212;
 }
 
-.contact-info a {
-  color: #e81cff;
-  text-decoration: none;
+.subscribe-inline-form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.contact-info a:hover {
-  text-decoration: underline;
-}
-
-.follo {
-  text-align: center;
-  align-items: center;
+.subscribe-inline-form input {
+  flex: 1;
+  min-width: 240px;
 }

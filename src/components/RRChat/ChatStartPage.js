@@ -1,68 +1,87 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useToast } from '../../context/ToastContext';
+import { FaUserCircle, FaArrowRight } from 'react-icons/fa';
 import './Css/ChatStartPage.css';
 
-const ChatStartPage = () => {
-  const [username, setUsername] = useState('');
-  const [isUsernameSet, setIsUsernameSet] = useState(false);
+const AVATAR_OPTIONS = ['🦊', '⚡', '🚀', '🐱', '🤖', '🎮', '🔥', '💎'];
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
+const ChatStartPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { addToast } = useToast();
+
+  const queryParams = new URLSearchParams(location.search);
+  const redirectRoom = queryParams.get('room') || '';
+
+  const [username, setUsername] = useState(() => localStorage.getItem('username') || '');
+  const [selectedAvatar, setSelectedAvatar] = useState(() => localStorage.getItem('user_avatar') || '🦊');
 
   const handleUsernameSubmit = (e) => {
     e.preventDefault();
-    if (username.trim() === '') {
-      alert('Username cannot be empty!');
+    if (!username.trim()) {
+      addToast('Please enter a username!', 'warning');
       return;
     }
 
-    localStorage.setItem('username', username); // Save username to localStorage
-    window.location.href = '/RoomChatPage';
-    // Example backend logic to save username (replace with your actual API endpoint)
-    axios.post('http://localhost:5000/api/set-username', { username })
-      .then(response => {
-        console.log('Username set successfully');
-        setIsUsernameSet(true); // Update state to reflect username is set
-      })
-      .catch(error => {
-        console.error('Failed to set username');
-        // Handle error
-      });
+    localStorage.setItem('username', username.trim());
+    localStorage.setItem('user_avatar', selectedAvatar);
+    addToast(`Welcome, ${username.trim()}!`, 'success');
+
+    if (redirectRoom) {
+      navigate(`/chat?room=${encodeURIComponent(redirectRoom)}`);
+    } else {
+      navigate('/rooms');
+    }
   };
 
-  // Redirect logic using useEffect
-  React.useEffect(() => {
-    const storedUsername = localStorage.getItem('username');
-    if (storedUsername) {
-      setUsername(storedUsername);
-      setIsUsernameSet(true);
-    }
-  }, []);
-
   return (
-    <div className="chat-start-page">
+    <div className="start-page-container">
+      <div className="start-card">
+        <div className="start-header">
+          <h1 className="start-title">Set Your Profile</h1>
+          <p className="start-subtitle">
+            Choose how you'll appear in chat rooms. No email or password needed.
+          </p>
+        </div>
 
-        <>
-          <h2>Get Started</h2>
-          <center>
-            <form className='form-group-user' onSubmit={handleUsernameSubmit}>
-              <div className="form-group">
-                <input
-                  className="form-input"
-                  type="text"
-                  placeholder="Set Your Username"
-                  value={username}
-                  onChange={handleUsernameChange}
-                  required
-                />
-              </div>
-              <button type="submit">Set Username</button>
-            </form>
-          </center>
-        </>
+        <form onSubmit={handleUsernameSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div>
+            <div className="avatar-selector-title">Pick an Avatar</div>
+            <div className="avatar-chips-row">
+              {AVATAR_OPTIONS.map((emoji) => (
+                <button
+                  type="button"
+                  key={emoji}
+                  className={`avatar-chip ${selectedAvatar === emoji ? 'active' : ''}`}
+                  onClick={() => setSelectedAvatar(emoji)}
+                >
+                  {emoji}
+                </button>
+              ))}
+            </div>
+          </div>
 
+          <div className="form-field">
+            <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <FaUserCircle /> Display Nickname
+            </label>
+            <input
+              className="input-modern"
+              type="text"
+              placeholder="e.g. CyberSamurai, PixelCoder"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              maxLength={24}
+              required
+            />
+          </div>
 
+          <button type="submit" className="btn-primary" style={{ width: '100%', padding: '14px', fontSize: '1rem' }}>
+            Continue to Chat <FaArrowRight />
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

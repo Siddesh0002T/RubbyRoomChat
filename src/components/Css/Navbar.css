@@ -1,36 +1,269 @@
-.navbar {
-    position: sticky;
-    top: 0;
-    width: 50%;
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    color: #fff;
+/* Navbar Header */
+.navbar-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: var(--border);
+  box-shadow: 0 4px 0px var(--text-main);
+  z-index: 1000;
+  transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.5px;
+}
+
+.brand-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #121212;
+  border: 2px solid var(--text-main);
+  box-shadow: 2px 2px 0px var(--text-main);
+  font-size: 1.1rem;
+}
+
+.brand-name span {
+  color: var(--primary);
+}
+
+.brand-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  background: var(--accent);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--text-main);
+  margin-left: 4px;
+}
+
+/* Nav Links */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+  background: var(--bg-card);
+}
+
+.nav-link.active {
+  background: var(--primary);
+  color: #121212;
+  border: 2px solid var(--text-main);
+  box-shadow: 2px 2px 0px var(--text-main);
+  font-weight: 700;
+}
+
+/* Navbar Actions */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   ANIMATED THEME TOGGLE BUTTON
+   ========================================================================== */
+.theme-mode-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  outline: none;
+}
+
+.toggle-track {
+  position: relative;
+  width: 58px;
+  height: 30px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: 2px 2px 0px var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-mode-toggle-btn:hover .toggle-track {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px var(--text-main);
+}
+
+.theme-mode-toggle-btn:active .toggle-track {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--text-main);
+}
+
+.toggle-icon {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: opacity 0.25s ease, transform 0.3s ease;
+}
+
+.toggle-sun {
+  color: #eab308;
+}
+
+.toggle-moon {
+  color: #a5b4fc;
+}
+
+.toggle-thumb {
+  position: absolute;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #121212;
+  border: 1.5px solid #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.3s ease;
+  z-index: 2;
+}
+
+.thumb-icon {
+  animation: iconPop 0.3s ease;
+}
+
+.dark-active .toggle-thumb {
+  transform: translateX(26px) rotate(360deg);
+}
+
+@keyframes iconPop {
+  0% { transform: scale(0.5); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Data Saver Button */
+.action-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: 2px 2px 0px var(--text-main);
+  color: var(--text-main);
+  border-radius: var(--radius-full);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn-pill:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px var(--text-main);
+}
+
+.action-btn-pill:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--text-main);
+}
+
+.active-saver {
+  background: var(--warning) !important;
+  color: #121212 !important;
+}
+
+/* Mobile Toggle */
+.mobile-toggle-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+@media (max-width: 820px) {
+  .mobile-toggle-btn {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    z-index: 1000; /* Ensure the navbar stays on top */
+    justify-content: center;
   }
-  
-  .navbar-logo {
-    font-size: 1.5rem;
-    color: #e81cff;
+
+  .navbar-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-main);
+    border-bottom: var(--border);
+    flex-direction: column;
+    padding: 16px 20px;
+    gap: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   }
-  
-  .navbar-links {
-    list-style: none;
+
+  .navbar-nav.mobile-open {
     display: flex;
-    gap: 15px;
   }
-  
-  .navbar-links li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease;
+
+  .nav-link {
+    width: 100%;
+    padding: 12px 16px;
   }
-  
-  .navbar-links li a:hover {
-    color: #e81cff;
+
+  .action-btn-text {
+    display: none;
   }
-  
+}

@@ -1,12 +1,277 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+/* ==========================================================================
+   NEO-BRUTALIST DESIGN SYSTEM (LIGHT & DARK MODES)
+   ========================================================================== */
+
+/* 1. LIGHT MODE (Default) */
+:root,
+[data-mode='light'] {
+  --bg-main: #fbf9f4;
+  --bg-secondary: #f0ede4;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fefefe;
+  --bg-input: #ffffff;
+
+  --text-main: #121212;
+  --text-muted: #525252;
+  --text-inverse: #ffffff;
+
+  --primary: #FFE500;
+  --primary-hover: #f0d600;
+  --primary-light: rgba(255, 229, 0, 0.3);
+  --secondary: #00D084;
+  --accent: #FF5C7C;
+  --purple-accent: #8C52FF;
+  --success: #00D084;
+  --warning: #FFE500;
+  --danger: #FF5C7C;
+
+  --border: 2.5px solid #121212;
+  --border-subtle: 2px solid #121212;
+  --border-focus: 2.5px solid #121212;
+  --card-shadow: 4px 4px 0px #121212;
+  --button-shadow: 3px 3px 0px #121212;
+  --glow: none;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --navbar-bg: rgba(251, 249, 244, 0.96);
+  --bubble-me: #FFE500;
+  --bubble-other: #ffffff;
+  --badge-bg: #8C52FF;
+  --badge-text: #ffffff;
+}
+
+/* 2. DARK MODE (Dark Neo-Brutalist) */
+[data-mode='dark'] {
+  --bg-main: #0e1117;
+  --bg-secondary: #161b24;
+  --bg-card: #1c222e;
+  --bg-card-hover: #222a38;
+  --bg-input: #131720;
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-inverse: #121212;
+
+  --primary: #FFE500;
+  --primary-hover: #f0d600;
+  --primary-light: rgba(255, 229, 0, 0.2);
+  --secondary: #00D084;
+  --accent: #FF5C7C;
+  --purple-accent: #8C52FF;
+  --success: #00D084;
+  --warning: #FFE500;
+  --danger: #FF5C7C;
+
+  --border: 2.5px solid #2d3648;
+  --border-subtle: 2px solid #242c3d;
+  --border-focus: 2.5px solid #FFE500;
+  --card-shadow: 4px 4px 0px #06070a;
+  --button-shadow: 3px 3px 0px #06070a;
+  --glow: none;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --navbar-bg: rgba(14, 17, 23, 0.96);
+  --bubble-me: #FFE500;
+  --bubble-other: #222a38;
+  --badge-bg: #8C52FF;
+  --badge-text: #ffffff;
+}
+
+/* ==========================================================================
+   ANIMATED THEME SWITCH TRANSITIONS (View Transitions + CSS Fallback)
+   ========================================================================== */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* Smooth color transition fallback */
+html, body,
+.app-layout,
+.navbar-header,
+.main-content,
+.card-modern,
+.hero-join-card,
+.bento-card,
+.quick-room-card,
+.chat-window,
+.messages-stream-container,
+.message-bubble-body,
+.chat-header-bar,
+.chat-input-area,
+.btn-primary,
+.btn-secondary,
+.input-modern,
+.footer-section {
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   BASE & RESET STYLES
+   ========================================================================== */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.alert-alert-warning{
-  padding: 20px;
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-main);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   LOW-SPEED INTERNET / DATA-SAVER OPTIMIZATIONS
+   ========================================================================== */
+.data-saver-mode *,
+.data-saver-mode *::before,
+.data-saver-mode *::after {
+  animation-duration: 0.001s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001s !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.data-saver-mode [data-mode='light'] * {
+  box-shadow: 2px 2px 0px #121212 !important;
+}
+
+/* Low speed network status banner */
+.network-banner {
+  background: var(--warning);
+  color: #121212;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+.network-banner.offline {
+  background: var(--danger);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATION STYLING
+   ========================================================================== */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 380px;
+  width: calc(100vw - 48px);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .toast-container {
+    bottom: 80px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+  }
+}
+
+.toast-item {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: var(--bg-card);
+  border: var(--border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  animation: toastSlideIn 0.25s ease;
+}
+
+.toast-icon {
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 0.78rem;
+}
+.toast-success .toast-icon { background: var(--success); color: #fff; }
+.toast-error .toast-icon { background: var(--danger); color: #fff; }
+.toast-warning .toast-icon { background: var(--warning); color: #121212; }
+.toast-info .toast-icon { background: var(--primary); color: #121212; }
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

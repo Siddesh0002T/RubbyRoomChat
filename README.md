@@ -146,7 +146,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](file:///e
 ![Rubby Room Chat Footer](./assets/banner-end.svg)
 
 <p align="center">
-  Made with ❤️ by <b>Siddhesh More</b>, <b>Yuvraj Chaudhari</b> & <b>RubbySoft</b>
+  Made with ❤️ by <b>Siddhesh More</b> & <b>RubbySoft</b>
 </p>
 
 </div>
