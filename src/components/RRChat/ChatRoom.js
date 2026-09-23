@@ -7,7 +7,7 @@ import { useToast } from '../../context/ToastContext';
 import MarkdownText from '../common/MarkdownText';
 import SendCodeModal from './SendCodeModal';
 import SendLinkModal from './SendLinkModal';
-import { FaPaperPlane, FaShareAlt, FaArrowLeft, FaBolt, FaComments, FaCheck, FaCheckDouble, FaCopy, FaCode, FaLink } from 'react-icons/fa';
+import { FaPaperPlane, FaShareAlt, FaArrowLeft, FaBolt, FaComments, FaCheck, FaCheckDouble, FaCopy, FaCode, FaLink, FaSmile } from 'react-icons/fa';
 import './Css/CR.css';
 
 const QUICK_EMOJIS = ['👋', '🔥', '❤️', '👍', '😂', '🚀', '🎉', '💯'];
@@ -30,6 +30,7 @@ const ChatRoom = () => {
   const [copiedMsgId, setCopiedMsgId] = useState(null);
   const [showCodeModal, setShowCodeModal] = useState(false);
   const [showLinkModal, setShowLinkModal] = useState(false);
+  const [showEmojiTray, setShowEmojiTray] = useState(false);
   const [messages, setMessages] = useState(() => {
     // 1. Instant Cache Load for Low Speed / Offline
     try {
@@ -96,6 +97,34 @@ const ChatRoom = () => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: dataSaver ? 'auto' : 'smooth' });
   }, [messages, dataSaver]);
+
+  // Mobile virtual keyboard & viewport stabilization
+  useEffect(() => {
+    const handleViewportChange = () => {
+      if (window.visualViewport) {
+        const height = window.visualViewport.height;
+        document.documentElement.style.setProperty('--visual-viewport-height', `${height}px`);
+        if (window.innerWidth <= 768) {
+          window.scrollTo(0, 0);
+          messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', handleViewportChange);
+      window.visualViewport.addEventListener('scroll', handleViewportChange);
+      handleViewportChange();
+    }
+
+    return () => {
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', handleViewportChange);
+        window.visualViewport.removeEventListener('scroll', handleViewportChange);
+        document.documentElement.style.removeProperty('--visual-viewport-height');
+      }
+    };
+  }, []);
 
   // Send Message with Optimistic UI
   const handleSendMessage = async (textToSend) => {
@@ -322,138 +351,154 @@ const ChatRoom = () => {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Quick Reactions Bar */}
-      <div className="quick-reactions-bar">
-        <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--text-muted)' }}>Quick:</span>
-        {QUICK_EMOJIS.map((emoji) => (
-          <button
-            key={emoji}
-            className="quick-emoji-chip"
-            onClick={() => handleSendMessage(emoji)}
-            title={`Send ${emoji}`}
-          >
-            {emoji}
-          </button>
-        ))}
-      </div>
+      {/* Unified Professional Message Composer */}
+      <div className="chat-composer-dock">
+        {/* Toggleable Quick Reactions Tray */}
+        {showEmojiTray && (
+          <div className="composer-emoji-tray">
+            <span className="emoji-tray-label">Quick Reactions:</span>
+            <div className="emoji-tray-list">
+              {QUICK_EMOJIS.map((emoji) => (
+                <button
+                  key={emoji}
+                  type="button"
+                  className="composer-emoji-chip"
+                  onClick={() => {
+                    handleSendMessage(emoji);
+                    setShowEmojiTray(false);
+                  }}
+                  title={`Send ${emoji}`}
+                >
+                  {emoji}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
-      {/* Markdown Helper Toolbar */}
-      <div className="markdown-toolbar">
-        <button
-          type="button"
-          className="md-toolbar-btn md-toolbar-send-code-btn"
-          onClick={() => setShowCodeModal(true)}
-          title="Share formatted Code Snippet with syntax colors"
+        <form
+          className="chat-composer-card"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSendMessage();
+          }}
         >
-          <FaCode style={{ marginRight: '5px' }} />
-          <span>Send Code</span>
-        </button>
-        <button
-          type="button"
-          className="md-toolbar-btn md-toolbar-send-link-btn"
-          onClick={() => setShowLinkModal(true)}
-          title="Share a Link with domain badge & copy button"
-        >
-          <FaLink style={{ marginRight: '5px' }} />
-          <span>Send Link</span>
-        </button>
-        <span className="md-toolbar-sep">|</span>
-        <span className="md-toolbar-label">Format:</span>
-        <button
-          type="button"
-          className="md-toolbar-btn"
-          onClick={() => insertMarkdown('**', '**', 'bold text')}
-          title="Bold (**text**)"
-        >
-          <strong>B</strong>
-        </button>
-        <button
-          type="button"
-          className="md-toolbar-btn"
-          onClick={() => insertMarkdown('*', '*', 'italic text')}
-          title="Italic (*text*)"
-        >
-          <em>I</em>
-        </button>
-        <button
-          type="button"
-          className="md-toolbar-btn"
-          onClick={() => insertMarkdown('`', '`', 'code')}
-          title="Inline Code (`code`)"
-        >
-          &lt;/&gt;
-        </button>
-        <button
-          type="button"
-          className="md-toolbar-btn"
-          onClick={() => insertMarkdown('```javascript\n', '\n```', '// paste code here')}
-          title="Code Block (```lang ... ```)"
-        >
-          &#123; &#125;
-        </button>
-        <button
-          type="button"
-          className="md-toolbar-btn"
-          onClick={() => insertMarkdown('> ', '', 'quote')}
-          title="Quote (> text)"
-        >
-          &ldquo;
-        </button>
-        <button
-          type="button"
-          className="md-toolbar-btn"
-          onClick={() => insertMarkdown('- ', '', 'list item')}
-          title="List (- item)"
-        >
-          &bull;
-        </button>
-      </div>
+          {/* Main Text Input */}
+          <div className="composer-input-row">
+            <textarea
+              ref={inputRef}
+              className="composer-textarea"
+              placeholder={`Message #${roomName}... (Enter to send, Shift+Enter for new line)`}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onFocus={() => {
+                if (window.innerWidth <= 768) {
+                  window.scrollTo(0, 0);
+                  setTimeout(() => messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }), 250);
+                }
+              }}
+              maxLength={4000}
+              rows={1}
+            />
+          </div>
 
-      {/* Input Form Bar */}
-      <form
-        className="chat-input-area"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSendMessage();
-        }}
-      >
-        <button
-          type="button"
-          className="btn-code-modal-trigger"
-          onClick={() => setShowCodeModal(true)}
-          title="Share Code Snippet (ChatGPT-style)"
-          aria-label="Share Code Snippet"
-        >
-          <FaCode />
-        </button>
-        <button
-          type="button"
-          className="btn-link-modal-trigger"
-          onClick={() => setShowLinkModal(true)}
-          title="Share Link (with domain & copy button)"
-          aria-label="Share Link"
-        >
-          <FaLink />
-        </button>
-        <input
-          ref={inputRef}
-          type="text"
-          className="chat-input-box"
-          placeholder={`Message #${roomName}... (Supports Markdown, links & code)`}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={handleKeyDown}
-          maxLength={4000}
-        />
-        <button
-          type="submit"
-          className="btn-send-message"
-          disabled={!message.trim()}
-          aria-label="Send message"
-        >
-          <FaPaperPlane />
-        </button>
-      </form>
+          {/* Integrated Actions & Formatting Bar */}
+          <div className="composer-footer-bar">
+            <div className="composer-tools-left">
+              {/* Code Snippet Button */}
+              <button
+                type="button"
+                className="composer-action-pill code-pill"
+                onClick={() => setShowCodeModal(true)}
+                title="Share formatted code snippet"
+              >
+                <FaCode />
+                <span>Code</span>
+              </button>
+
+              {/* Share Link Button */}
+              <button
+                type="button"
+                className="composer-action-pill link-pill"
+                onClick={() => setShowLinkModal(true)}
+                title="Share rich link with preview"
+              >
+                <FaLink />
+                <span>Link</span>
+              </button>
+
+              <span className="composer-sep" />
+
+              {/* Markdown Format Tools */}
+              <button
+                type="button"
+                className="composer-format-btn"
+                onClick={() => insertMarkdown('**', '**', 'bold text')}
+                title="Bold (**text**)"
+              >
+                <strong>B</strong>
+              </button>
+              <button
+                type="button"
+                className="composer-format-btn"
+                onClick={() => insertMarkdown('*', '*', 'italic text')}
+                title="Italic (*text*)"
+              >
+                <em>I</em>
+              </button>
+              <button
+                type="button"
+                className="composer-format-btn"
+                onClick={() => insertMarkdown('`', '`', 'code')}
+                title="Inline Code (`code`)"
+              >
+                &lt;/&gt;
+              </button>
+              <button
+                type="button"
+                className="composer-format-btn"
+                onClick={() => insertMarkdown('> ', '', 'quote')}
+                title="Quote (> text)"
+              >
+                &ldquo;
+              </button>
+              <button
+                type="button"
+                className="composer-format-btn"
+                onClick={() => insertMarkdown('- ', '', 'list item')}
+                title="List (- item)"
+              >
+                &bull;
+              </button>
+
+              <span className="composer-sep" />
+
+              {/* Quick Reactions Toggle */}
+              <button
+                type="button"
+                className={`composer-format-btn emoji-trigger ${showEmojiTray ? 'active' : ''}`}
+                onClick={() => setShowEmojiTray((prev) => !prev)}
+                title="Quick reactions"
+              >
+                <FaSmile />
+              </button>
+            </div>
+
+            <div className="composer-tools-right">
+              <button
+                type="submit"
+                className="composer-send-btn"
+                disabled={!message.trim()}
+                title="Send message"
+                aria-label="Send message"
+              >
+                <FaPaperPlane />
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
 
       {/* ChatGPT-style Code Snippet Modal */}
       <SendCodeModal

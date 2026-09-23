@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 /* ==========================================================================
    NEO-BRUTALIST DESIGN SYSTEM (LIGHT & DARK MODES)
@@ -22,6 +22,8 @@
   --primary-light: rgba(255, 229, 0, 0.3);
   --secondary: #00D084;
   --accent: #FF5C7C;
+  --accent-pink: #FF5C7C;
+  --accent-mint: #00D084;
   --purple-accent: #8C52FF;
   --success: #00D084;
   --warning: #FFE500;
@@ -37,7 +39,9 @@
   --radius-md: 14px;
   --radius-lg: 18px;
   --radius-full: 9999px;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --navbar-bg: rgba(251, 249, 244, 0.96);
   --bubble-me: #FFE500;
@@ -63,6 +67,8 @@
   --primary-light: rgba(255, 229, 0, 0.2);
   --secondary: #00D084;
   --accent: #FF5C7C;
+  --accent-pink: #FF5C7C;
+  --accent-mint: #00D084;
   --purple-accent: #8C52FF;
   --success: #00D084;
   --warning: #FFE500;
@@ -78,7 +84,9 @@
   --radius-md: 14px;
   --radius-lg: 18px;
   --radius-full: 9999px;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --navbar-bg: rgba(14, 17, 23, 0.96);
   --bubble-me: #FFE500;
@@ -142,12 +150,27 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: var(--font-family);
+  font-family: var(--font-body);
   background-color: var(--bg-main);
   color: var(--text-main);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6,
+.brand-name,
+.hero-headline,
+.section-title,
+.bento-title,
+.chat-room-name,
+.code-modal-title,
+.link-modal-title,
+.form-header-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+  font-weight: 800;
 }
 
 #root {

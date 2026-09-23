@@ -99,7 +99,7 @@ const SendCodeModal = ({ isOpen, onClose, onSendCode }) => {
             </div>
             <div>
               <h2 id="code-modal-title" className="code-modal-title">Share Code Snippet</h2>
-              <p className="code-modal-subtitle">Formatted with ChatGPT-style syntax highlighting & copy button</p>
+              <p className="code-modal-subtitle">Syntax-highlighted code block with line numbers & quick copy</p>
             </div>
           </div>
           <button

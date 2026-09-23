@@ -75,7 +75,7 @@ const SendLinkModal = ({ isOpen, onClose, onSendLink }) => {
             </div>
             <div>
               <h2 id="link-modal-title" className="link-modal-title">Share Link</h2>
-              <p className="link-modal-subtitle">Formatted with interactive badge, domain chip & copy button</p>
+              <p className="link-modal-subtitle">Formatted with live domain preview and one-click copy</p>
             </div>
           </div>
           <button

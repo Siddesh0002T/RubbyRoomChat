@@ -30,9 +30,9 @@
 }
 
 /* =========================================================
-   ChatGPT / Modern LLM Style Code Card
+   Terminal Code Card & Copy Code Button
    ========================================================= */
-.chatgpt-code-card {
+.code-terminal-card {
   margin: 10px 0;
   border-radius: 8px;
   background: #0d1117;
@@ -43,14 +43,14 @@
   max-width: 100%;
 }
 
-[data-mode='dark'] .chatgpt-code-card {
+[data-mode='dark'] .code-terminal-card {
   background: #090d16;
   border: 2px solid #30363d;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
 }
 
-/* ChatGPT Top Header Bar */
-.chatgpt-code-header {
+/* Terminal Top Header Bar */
+.code-terminal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,12 +61,12 @@
   user-select: none;
 }
 
-[data-mode='dark'] .chatgpt-code-header {
+[data-mode='dark'] .code-terminal-header {
   background: #131823;
   border-bottom: 1px solid #30363d;
 }
 
-.chatgpt-code-lang {
+.code-terminal-lang {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -77,13 +77,13 @@
   letter-spacing: 0.5px;
 }
 
-.chatgpt-lang-icon {
+.code-terminal-lang-icon {
   font-size: 0.72rem;
   color: #58a6ff;
 }
 
-/* ChatGPT Copy Code Button */
-.chatgpt-copy-btn {
+/* Copy Code Button */
+.code-terminal-copy-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -99,30 +99,30 @@
   transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.chatgpt-copy-btn:hover {
+.code-terminal-copy-btn:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-.chatgpt-copy-btn.copied {
+.code-terminal-copy-btn.copied {
   color: #3fb950;
   background: rgba(46, 160, 67, 0.15);
   border-color: rgba(46, 160, 67, 0.4);
 }
 
-.chatgpt-copy-btn .copy-icon {
+.code-terminal-copy-btn .copy-icon {
   font-size: 0.75rem;
 }
 
-/* ChatGPT Code Body & Pre */
-.chatgpt-code-body {
+/* Code Body & Pre */
+.code-terminal-body {
   position: relative;
   overflow-x: auto;
   padding: 10px 0;
 }
 
-.chatgpt-pre {
+.code-terminal-pre {
   margin: 0;
   padding: 0 14px;
   font-family: 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace;
@@ -132,12 +132,12 @@
   white-space: pre;
 }
 
-.chatgpt-code-line {
+.code-terminal-line {
   display: flex;
   min-height: 1.6em;
 }
 
-.chatgpt-line-num {
+.code-terminal-line-num {
   width: 32px;
   min-width: 32px;
   margin-right: 14px;
@@ -148,7 +148,7 @@
   opacity: 0.7;
 }
 
-.chatgpt-line-tokens {
+.code-terminal-line-tokens {
   flex: 1;
 }
 
@@ -219,7 +219,7 @@
 }
 
 /* =========================================================
-   ChatGPT / Rich Link Badge & Copy Link Button
+   Rich Link Badge & Copy Link Button
    ========================================================= */
 .md-rich-link-badge {
   display: inline-flex;

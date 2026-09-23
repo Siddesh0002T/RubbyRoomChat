@@ -6,11 +6,11 @@ function Type() {
     <Typewriter
       options={{
         strings: [
-          "Rubby Room Chat",
-           "RubbySoft",
-          "Real Time Chat Room",
-          "Chat Any Time",
-          "Create Unlimited Chat Room",
+          "Disposable Chat Rooms",
+          "Real-Time Messaging",
+          "No Signups. Zero Tracking.",
+          "Code & Markdown Sharing",
+          "Fast on Any Network",
         ],
         autoStart: true,
         loop: true,

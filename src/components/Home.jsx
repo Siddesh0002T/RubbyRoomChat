@@ -57,21 +57,21 @@ const Home = () => {
           </h1>
 
           <p className="hero-subhead">
-            Rubby Room Chat is designed for instant, zero-friction communication. Create or enter any chat room with a custom link, switch between 4 curated themes, and experience lightning-fast messaging even on 2G/3G mobile networks.
+            Rubby Room Chat is built for instant, zero-friction communication. Create or join any chat room in seconds with custom share links, markdown formatting, syntax-highlighted code sharing, and a responsive Neo-Brutalist design that stays snappy on any network.
           </p>
 
           <div className="hero-stats-row">
             <div className="stat-item">
               <span className="stat-number">0s</span>
-              <span className="stat-label">Sign-up Friction</span>
+              <span className="stat-label">No Registration</span>
             </div>
             <div className="stat-item">
               <span className="stat-number">0ms</span>
-              <span className="stat-label">Cache Latency</span>
+              <span className="stat-label">Local Cache Load</span>
             </div>
             <div className="stat-item">
               <span className="stat-number">100%</span>
-              <span className="stat-label">Offline Cached</span>
+              <span className="stat-label">Private & Ephemeral</span>
             </div>
           </div>
         </div>

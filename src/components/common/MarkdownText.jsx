@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaCopy, FaCheck, FaTerminal, FaLink, FaExternalLinkAlt } from 'react-icons/fa';
 import './MarkdownText.css';
 
-// Syntax highlighting tokenizer for ChatGPT / LLM style rendering
+// Syntax highlighting tokenizer for code blocks
 const KEYWORDS = new Set([
   'const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while', 'do',
   'import', 'export', 'from', 'default', 'as', 'class', 'extends', 'super', 'this',
@@ -71,7 +71,7 @@ function getDomain(url) {
 }
 
 /**
- * Rich Link Component with ChatGPT-style card badge, domain chip, external icon, and Copy Link button.
+ * Rich Link Component with clean card badge, domain chip, external icon, and Copy Link button.
  */
 const RichLink = ({ href, label }) => {
   const [copied, setCopied] = useState(false);
@@ -189,7 +189,7 @@ function tokenizeLine(line) {
 }
 
 /**
- * Lightweight, safe Markdown & Code renderer with ChatGPT/LLM style syntax boxes and copy button.
+ * Lightweight, safe Markdown & Code renderer with syntax boxes and copy button.
  */
 const MarkdownText = ({ text }) => {
   const [copiedIndex, setCopiedIndex] = useState(null);
@@ -296,16 +296,16 @@ const MarkdownText = ({ text }) => {
     const showLineNumbers = rawLines.length > 1;
 
     elements.push(
-      <div key={`code-${blockMatch.index}`} className="chatgpt-code-card">
-        {/* ChatGPT Style Header */}
-        <div className="chatgpt-code-header">
-          <div className="chatgpt-code-lang">
-            <FaTerminal className="chatgpt-lang-icon" />
+      <div key={`code-${blockMatch.index}`} className="code-terminal-card">
+        {/* Terminal Header */}
+        <div className="code-terminal-header">
+          <div className="code-terminal-lang">
+            <FaTerminal className="code-terminal-lang-icon" />
             <span>{lang.toLowerCase()}</span>
           </div>
           <button
             type="button"
-            className={`chatgpt-copy-btn ${isCopied ? 'copied' : ''}`}
+            className={`code-terminal-copy-btn ${isCopied ? 'copied' : ''}`}
             onClick={() => copyCodeSnippet(codeContent, currentBlockIdx)}
             title="Copy code to clipboard"
           >
@@ -324,15 +324,15 @@ const MarkdownText = ({ text }) => {
         </div>
 
         {/* Code Block with Syntax Colors & Line Numbers */}
-        <div className="chatgpt-code-body">
-          <pre className="chatgpt-pre">
+        <div className="code-terminal-body">
+          <pre className="code-terminal-pre">
             <code>
               {rawLines.map((lineStr, lineIdx) => (
-                <div key={lineIdx} className="chatgpt-code-line">
+                <div key={lineIdx} className="code-terminal-line">
                   {showLineNumbers && (
-                    <span className="chatgpt-line-num">{lineIdx + 1}</span>
+                    <span className="code-terminal-line-num">{lineIdx + 1}</span>
                   )}
-                  <span className="chatgpt-line-tokens">
+                  <span className="code-terminal-line-tokens">
                     {tokenizeLine(lineStr)}
                   </span>
                 </div>
