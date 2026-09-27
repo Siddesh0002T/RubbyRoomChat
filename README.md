@@ -148,5 +148,5 @@ This project is licensed under the **MIT License** - see the [LICENSE](file:///e
 <p align="center">
   Made with ❤️ by <b>Siddhesh More</b> & <b>RubbySoft</b>
 </p>
-
+---
 </div>
